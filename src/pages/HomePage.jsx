@@ -20,19 +20,24 @@ function HomePage() {
             <h1 style={{ fontSize: "24px" }}>Your Guide to the World</h1>
 
             <div className="listGroup">
-                {countries &&
-                    (countries.map((country) => {
-                        return (
-                            <>
-                                <Link to={`/${country.alpha3Code}`} className="list-group-item list-group-item-action">
-                                    <h3>
-                                        <img src={`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`} />
-                                        {country.name.common}</h3>
-                                </Link>
-                            </>
-                        )
-                    }))
-                }
+                <table className="table-bordered" style={{ width: "100%" }}>
+                    <tbody>
+                        {countries &&
+                            (countries.map((country) => {
+                                return (
+                                    <tr style={{ height: "20%" }} key={country.alpha3Code}>
+                                        <td>
+                                            <Link to={`/${country.alpha3Code}`} className="list-group-item list-group-item">
+                                                <img src={`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`} style={{ width: "65px" }} />
+                                                <h3 style={{ fontSize: "18px" }}>{country.name.common}</h3>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                )
+                            }))
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     )
