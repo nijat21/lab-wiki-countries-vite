@@ -22,10 +22,10 @@ function HomePage() {
             <div className="listGroup">
                 <table className="table-bordered" style={{ width: "100%" }}>
                     <tbody>
-                        {countries &&
+                        {countries ?
                             (countries.map((country) => {
                                 return (
-                                    <tr style={{ height: "20%" }} key={country.alpha3Code}>
+                                    <tr style={{ height: "5vw" }} key={country.alpha3Code}>
                                         <td>
                                             <Link to={`/${country.alpha3Code}`} className="list-group-item list-group-item">
                                                 <img src={`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`} style={{ width: "65px" }} />
@@ -35,6 +35,8 @@ function HomePage() {
                                     </tr>
                                 )
                             }))
+                            :
+                            <p style={{ fontSize: "20px", marginTop: "100px" }}>Loading...</p>
                         }
                     </tbody>
                 </table>
